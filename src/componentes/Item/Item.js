@@ -3,9 +3,23 @@ import './item.css'
 
 import Avatar from '../Avatar/Avatar'
 import ItemList from "../ItemList/ItemList";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+export const ItemListContainer = ()=>{
+  const[producto, setproducto ]= useState ([]);
 
+  useEffect(() => {
+    const getProducto = new Promise((resolve) => {
+      setTimeout(()=>{
+resolve(producto)
+    },3000)
+    })
+
+    getProducto.then(res => setproducto(res))
+  },[producto])
+  
+
+}
 
 
 const Item = ({producto})=> {
@@ -24,11 +38,11 @@ const Item = ({producto})=> {
 console.log ( 'el contador se ejecuta')
       }, [contador])
 
-      
+     
     
     return(
         
-        <ItemList>
+        <ItemList producto={producto}>
         <Avatar className = "imagen" src = {producto.imagen}/>
         <p className="titulo-cuadros"> 
             <strong>{producto.titulo}</strong>
@@ -42,7 +56,7 @@ console.log ( 'el contador se ejecuta')
 
         </div>
 <p className='contador'>Agregar al carrito <br></br>{contador}</p>
-        </ItemList>
+        </ItemList >
         )
 
 }
