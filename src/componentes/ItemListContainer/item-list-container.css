@@ -1,0 +1,10 @@
+.productos-list{
+display: flex;
+
+justify-content: center;
+gap: 1rem;
+height: 600px;
+background-image: url(/src/imagenBody.png);
+
+}
+
