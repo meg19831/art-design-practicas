@@ -1,4 +1,4 @@
-import ItemList from '../ItemList/ItemList'
+import ItemList from '../componentes/ItemList/ItemList'
 
 export const productos = [
     {

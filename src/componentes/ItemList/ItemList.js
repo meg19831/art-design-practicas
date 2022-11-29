@@ -6,9 +6,8 @@ import Item from "../Item/Item";
 
 const  ItemList = ({ productos = []})=> {
   return <div className="item">
-    {productos.map(producto   =>(
-      <Item item = {producto} key = {producto.id}/>
-    ))}
+    {productos.map(producto   =>(<Item item = {producto} key = {producto.id}/>)
+    )}
       
     </div>
   };

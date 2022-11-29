@@ -5,21 +5,7 @@ import Avatar from '../Avatar/Avatar'
 import ItemList from "../ItemList/ItemList";
 import React, { useEffect, useState } from 'react';
 
-export const ItemListContainer = ()=>{
-  const[producto, setproducto ]= useState ([]);
 
-  useEffect(() => {
-    const getProducto = new Promise((resolve) => {
-      setTimeout(()=>{
-resolve(producto)
-    },3000)
-    })
-
-    getProducto.then(res => setproducto(res))
-  },[producto])
-  
-
-}
 
 
 const Item = ({producto})=> {

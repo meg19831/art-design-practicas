@@ -3,9 +3,10 @@ import Item from "../Item/Item";
 
 import './item-list-container.css';
 
-import { productos} from './productos'
+import { productos} from '../../data/productos'
 
 import ItemList  from "../ItemList/ItemList";
+import { useEffect, useState } from "react";
 
 export const card = [
     {
@@ -39,8 +40,23 @@ export const card = [
   },
 ];
 
+export const ItemListContainer = ()=>{
+    const[producto, setproducto ]= useState ([]);
+  
+    useEffect(() => {
+      const getProducto = new Promise((resolve) => {
+        setTimeout(()=>{
+  resolve(producto)
+      },3000)
+      })
+  
+      getProducto.then(res => setproducto(res))
+    }, [])
+    
+  
+  }
 
-const ItemListContainer = ()=>{
+const compraste = ()=>{
     return(
         <div className="productos-list">
             {productos.map((producto) => (
@@ -53,8 +69,8 @@ contenido ={producto.contenido}
 
 />
             ))}
-    <ItemList/>    
+    <ItemList />    
     </div>
     );
 };
-export default ItemListContainer;
+export default compraste;
