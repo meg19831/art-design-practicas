@@ -8,6 +8,13 @@
     height: 100%;
 }
 
+.card-titulo{
+    text-align: center;
+    justify-items: center;
+    
+    margin-bottom: 15px;
+    font-family: cursive;
+      }
 
 /*estilos de los botones de contador*/
 .button{

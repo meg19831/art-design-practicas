@@ -1,76 +1,44 @@
-
+import React,  {useState, useEffect}from "react";
+/* import { useParams } from "react-router-dom"; */
 import Item from "../Item/Item";
 
-import './item-list-container.css';
+import "./item-list-container.css"
 
-import { productos} from '../../data/productos'
 
-import ItemList  from "../ItemList/ItemList";
-import { useEffect, useState } from "react";
+const ItemListContainer = () =>{
+        const[prod, setProductos ]= useState ([]);
 
-export const card = [
-    {
-        titulo: 'Linea Amor',
-        id: 1,
-        precio: 2000,
-        imagen: '/assets/img/amor.jpg',
-        contenido:
-        'Cuadro'
-      },
-      {titulo: 'Linea Amor',
-        id: 2,
-        precio: 4000,
-        imagen: '/assets/img/amor1.jpg',
-        contenido:
-        'Cuadro'
-      },
-      {titulo: 'Linea Amor',
-      id: 3,
-      precio: 4000,
-      imagen: '/assets/img/amor2.jpg',
-      contenido:
-      'Cuadro'
-    },
-    {titulo: 'Linea Amor',
-    id: 4,
-    precio: 4000,
-    imagen: '/assets/img/amor3.jpg',
-    contenido:
-      'Cuadro',
-  },
-];
-
-export const ItemListContainer = ()=>{
-    const[producto, setproducto ]= useState ([]);
+       /*  const {categoriaId} = useParams (); */
   
-    useEffect(() => {
-      const getProducto = new Promise((resolve) => {
-        setTimeout(()=>{
-  resolve(producto)
-      },3000)
-      })
-  
-      getProducto.then(res => setproducto(res))
-    }, [])
+    useEffect(()=>{
+      fetch("../data/productos.json")
+      .then((res)=>res.json())
+      .then((obj)=>setProductos(obj))
+    })
+
+      
+    
+    return(  
+
+        <div className="productos-list">
+          {prod.map((prod)=>
+            <Item 
+            key = {prod.id}
+            titulo= {prod.titulo}
+            precio = {prod.precio}
+            contenido = {prod.contenido}
+            cuadro = {prod.cuadro}
+            imagen= {prod.imagen}
+            />
+          )}
+        </div>
+
+    )
+}
+export default ItemListContainer
+
+
+
     
   
-  }
-
-const compraste = ()=>{
-    return(
-        <div className="productos-list">
-            {productos.map((producto) => (
-<Item
-titulo = {producto.titulo}
-id= {producto.id}
-imagen = {producto.imagen}
-precio ={producto.precio}
-contenido ={producto.contenido}
-
-/>
-            ))}
-    <ItemList />    
-    </div>
-    );
-};
-export default compraste;
+  
